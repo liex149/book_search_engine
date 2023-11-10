@@ -1,5 +1,7 @@
 const express = require('express');
+const mongoose = require('mongoose')
 const path = require('path');
+//db connection
 const db = require('./config/connection');
 const routes = require('./routes');
 //import apollo server
@@ -7,11 +9,6 @@ const { ApolloServer } = require("apollo-server-express");
 // import typeDefs and resolvers
 const { typeDefs, resolvers } = require("./schemas");
 const { authMiddleware } = require("./utils/auth");
-
-//db connection
-// const db = require("./config/connection");
-
-// const routes = require('./routes');
 
 //express server
 const app = express();
@@ -54,3 +51,4 @@ db.once("open", () => {
   });
 });
 }
+startApolloServer();
